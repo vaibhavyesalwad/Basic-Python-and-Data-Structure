@@ -1,7 +1,7 @@
 """Check whether two words are anagrams are not"""
 
 
-def count(ch, w):
+def count(ch, w):             # Find frequency of character
     i = 0
     for j in w:
         if j == ch:
