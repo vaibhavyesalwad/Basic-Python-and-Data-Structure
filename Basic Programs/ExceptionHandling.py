@@ -1,4 +1,4 @@
-"""Implement exception handling, take integer as input and make sure it is greater than 0"""
+"""Implement exception handling, take input and make sure it is integer greater than 0"""
 
 try:                               # checks real time error
     num = int(input('Enter a number:'))                # if input other than integer then raises ValueError
