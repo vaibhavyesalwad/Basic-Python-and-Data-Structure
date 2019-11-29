@@ -10,7 +10,7 @@ for i in range(1, lines+1):
     print()
 
     numbers = []
-    numbers.append(num[0])
+    numbers.append(num[0])              # Creating list of numbers for next line
     for i in range(len(num)-1):
         term = num[i] + num[i+1]
         numbers.append(term)
