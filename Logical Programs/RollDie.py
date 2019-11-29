@@ -9,12 +9,12 @@ print(result)
 max_count = 0
 counts = []
 
-for i in range(1, 7):
+for i in range(1, 7):               # Any number would be in range(1,7) for randint(1,6)
     count = 0
     for k in result:
         if k == i:
             count += 1
-    counts.append(count)
+    counts.append(count)            # counts frequency of each character & find max frequency
     if count > max_count:
         max_count = count
 

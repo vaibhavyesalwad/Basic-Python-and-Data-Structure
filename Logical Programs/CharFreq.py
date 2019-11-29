@@ -3,15 +3,13 @@
 string = input('Enter string:')
 
 char_freq = {}
-unique = []
-for ch in string:
+unique = set(string)         # Got unique characters
+for ch in unique:
     count = 0
-    if ch not in unique:
-        unique.append(ch)
-        for c in string:
-            if c == ch:
-                count += 1
+    for c in string:
+        if c == ch:
+            count += 1
 
-        char_freq[ch] = count
+    char_freq[ch] = count
 
 print(char_freq)

@@ -39,25 +39,15 @@ def digitSum(num):
 
 start = int(input('Enter starting number:'))
 end = int(input('Enter ending number:'))
-primes = []
-palindromes = []
-
 count = 0
-for num in range(start, end+1):
-    if isPrime(num):
-        primes.append(num)
 
-
-for num in primes:
-    if isNumPalindrome(num):
-        palindromes.append(num)
-
-sums = []
+primes = [num for num in range(start, end+1) if isPrime(num)]
+palindromes = [num for num in primes if isNumPalindrome(num)]
 
 print(primes)
 print(palindromes)
-for i in range(len(palindromes)):
-    print(f'{palindromes[i],digitSum(palindromes[i])}', end=' ')
+for n in palindromes:
+    print(f'{n,digitSum(n)}', end=' ')
 
 
 
