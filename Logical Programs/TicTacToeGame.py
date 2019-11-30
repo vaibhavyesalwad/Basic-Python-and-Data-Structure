@@ -28,64 +28,22 @@ def check_position(pos):            # fn checks whether given position is vacant
 
 
 def check_end(sign):               # fn checks whether game has been won by user or computer
-    i = 0                             # it takes user's sign or computer's sign after his/it's turn
+    for i in range(3):                     # it takes user's sign or computer's sign after his/it's turn
+        for j in range(3):
+            if values[i][j] != sign:
+                break
+        else:
+            return True                              # total 8 conditions to be checked for winning conditions
+
     for j in range(3):
-        if values[i][j] == sign:      # total 8 conditions to be checked for winning conditions
-            continue
+        for i in range(3):
+            if values[i][j] != sign:
+                break
         else:
-            break
-    else:
-        return True
-
-    i = 1
-    for j in range(3):
-        if values[i][j] == sign:
-            continue
-        else:
-            break
-    else:
-        return True
-
-    i = 2
-    for j in range(3):
-        if values[i][j] == sign:
-            continue
-        else:
-            break
-    else:
-        return True
-
-    j = 0
-    for i in range(3):
-        if values[i][j] == sign:
-            continue
-        else:
-            break
-    else:
-        return True
-
-    j = 1
-    for i in range(3):
-        if values[i][j] == sign:
-            continue
-        else:
-            break
-    else:
-        return True
-
-    j = 2
-    for i in range(3):
-        if values[i][j] == sign:
-            continue
-        else:
-            break
-    else:
-        return True
+            return True
 
     for i in range(3):
-        if values[i][i] == sign:
-            continue
-        else:
+        if values[i][i] != sign:
             break
     else:
         return True
@@ -110,16 +68,18 @@ show_values()                                   # shows blank matrix with positi
 print("Let's play tic tac toe game")
 while True:
     try:
-        usr_sign = input("Choose 'x' or  'o'  sign:")      # defining sign for players user and computer
-        assert usr_sign == 'x' or usr_sign == 'o'
+        usr_sign = input("Choose 'X' or  'O'  sign:")      # defining sign for players user and computer
+        assert usr_sign in 'oOxX'
+        usr_sign = usr_sign.upper()
+        print(usr_sign)
         break
     except AssertionError:
         print('Invalid sign declaration')
 
-if usr_sign == 'x':
-    comp_sign = 'o'
+if usr_sign == 'X':
+    comp_sign = 'O'
 else:
-    comp_sign = 'x'
+    comp_sign = 'X'
 
 s = random.randint(1, 10)
 comp_pos = [i for i in range(1, 10)]                # computer uses values from this list for playing it's turn
