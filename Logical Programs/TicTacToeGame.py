@@ -18,9 +18,6 @@ def fill_value(pos, usr_sign):      # fn fills given position with user's input/
 
 
 def check_position(pos):            # fn checks whether given position is vacant or not
-    if pos < 1 or pos > 9:
-        return 'Invalid position'
-
     for i in range(3):
         for j in range(3):
             if positions[i][j] == pos:
@@ -111,7 +108,14 @@ for i in range(3):
 
 show_values()                                   # shows blank matrix with positions
 print("Let's play tic tac toe game")
-usr_sign = input("Choose 'x' or  'o'  sign:")      # defining sign for players user and computer
+while True:
+    try:
+        usr_sign = input("Choose 'x' or  'o'  sign:")      # defining sign for players user and computer
+        assert usr_sign == 'x' or usr_sign == 'o'
+        break
+    except AssertionError:
+        print('Invalid sign declaration')
+
 if usr_sign == 'x':
     comp_sign = 'o'
 else:
@@ -122,10 +126,16 @@ comp_pos = [i for i in range(1, 10)]                # computer uses values from 
 count = 0                                       # counts total turns in the game
 
 while True:
-    pos = int(input('Enter position to fill:'))
-    while check_position(pos):                       # checking whether given position is appropriate to move forward
-        print(check_position(pos))
-        pos = int(input('Enter position to fill:'))
+    while True:                       # checking whether given position is appropriate to move forward
+        try:
+            pos = int(input('Enter position to fill:'))
+            assert 0 < pos < 10
+            if not check_position(pos):
+                break
+            else:
+                print(check_position(pos))
+        except(ValueError, AssertionError):
+            print('Only integers in range 1-9 are allowed')
 
     fill_value(pos, usr_sign)                              # fills user's sign in values's matrix
     show_values()                                  # after each turn check whether game ends or not
