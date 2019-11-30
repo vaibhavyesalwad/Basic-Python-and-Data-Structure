@@ -2,22 +2,25 @@
 import random
 
 
-def show_values():              # fn shows current state of the game in 3*3 matrix
+def show_values():
+    """Function shows current state of the game in 3*3 matrix"""
     for i in range(3):
         for j in range(3):
-            print(f'{positions[i][j]}:{values[i][j]}', end=' ')
+            print(f'{positions[i][j]}:{values[i][j]}', end=' ')     # prints values along with position
         print()
     print()
 
 
-def fill_value(pos, usr_sign):      # fn fills given position with user's input/ computers's input
+def fill_value(pos, sign):
+    """Function fills given position with players's sign"""
     for i in range(3):
         for j in range(3):
             if positions[i][j] == pos:
-                values[i][j] = usr_sign
+                values[i][j] = sign
 
 
-def check_position(pos):            # fn checks whether given position is vacant or not
+def check_position(pos):
+    """Function checks whether given position is vacant or not"""
     for i in range(3):
         for j in range(3):
             if positions[i][j] == pos:
@@ -27,15 +30,16 @@ def check_position(pos):            # fn checks whether given position is vacant
     return False
 
 
-def check_end(sign):               # fn checks whether game has been won by user or computer
+def check_end(sign):
+    """Function checks whether game has been won by user or computer"""
     for i in range(3):                     # it takes user's sign or computer's sign after his/it's turn
         for j in range(3):
             if values[i][j] != sign:
                 break
         else:
-            return True                              # total 8 conditions to be checked for winning conditions
+            return True
 
-    for j in range(3):
+    for j in range(3):                     # total 8 conditions to be checked for winning conditions
         for i in range(3):
             if values[i][j] != sign:
                 break
@@ -71,7 +75,6 @@ while True:
         usr_sign = input("Choose 'X' or  'O'  sign:")      # defining sign for players user and computer
         assert usr_sign in 'oOxX'
         usr_sign = usr_sign.upper()
-        print(usr_sign)
         break
     except AssertionError:
         print('Invalid sign declaration')
